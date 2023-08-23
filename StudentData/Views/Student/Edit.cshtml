@@ -1,0 +1,49 @@
+﻿@model StudentData.Models.StudentViewModel
+
+@{
+    ViewData["Title"] = "Edit Student";
+    var errorMessage = TempData["errorMessage"]?.ToString();
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+    <div class="alert alert-danger">
+        <strong> Error! </strong>@errorMessage
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert"></button>
+    </div>
+}
+<form action="Edit" method="post" autocomplete="off">
+    <div class="mb-3">
+        <label class="form-label">Id</label>
+        <input type="text" class="form-control" asp-for="Id" readonly/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">First Name</label>
+        <input type="text" class="form-control" asp-for="FirstName" />
+        <span asp-validate-formaction="First Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Last Name</label>
+        <input type="text" class="form-control" asp-for="LastName" />
+        <span asp-validate-formaction="Last Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Date Of Birth</label>
+        <input type="date" class="form-control" asp-for="DateOfBirth" />
+        <span asp-validate-formaction="Date Of birth" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" asp-for="Email" />
+        <span asp-validate-formaction="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Stream</label>
+        <input type="text" class="form-control" asp-for="Stream" />
+        <span asp-validate-formaction="Stream" class="text-danger"></span>
+    </div>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-success">Update</button>
+    </div>
+</form>
